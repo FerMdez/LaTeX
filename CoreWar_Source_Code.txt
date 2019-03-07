@@ -1,0 +1,297 @@
+﻿\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{graphics}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+]{doclicense}
+\usepackage{mdframed}
+\usepackage[margin = 1.2in]{geometry}
+
+
+
+\title{El manual básico de CoreWar \\
+\large Aprende Redcode DAT cero.}
+\author{Fernando Méndez Torrubiano & David Pacios Izquierdo}
+\date{2 de febrero de 2019}
+
+\begin{document}
+\pagestyle{fancy} %Estilo de página a partir de aquí
+\rhead{El manual básico de CoreWar} %Encabezado a la derecha.
+
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 0.8\textwidth]{COREWARUCM.jpg}
+\end{figure}
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Introducción al CoreWar.}
+
+\subsection{Historia}
+\noindent
+\textsc{\textbf{CoreWar}} es un juego de programación en donde combaten entre sí programas escritos en un lenguaje similar al ensamblador con el objetivo de ocupar toda la memoria de la máquina eliminando así a los oponentes.
+\newline El primer sistema de este tipo se denominó \textbf{Redcode} así como el lenguaje empleado.
+
+\subsection{Objetivo}
+\noindent
+Sobrescribir el programa del rival y/o hacer que ejecute una instrucción ilegal (\textbf{\textsc{DAT}}).
+
+\subsection{Conceptos básicos}
+\noindent
+\begin{itemize}
+    \item \textbf{\textsc{Ejecución de instrucciones:}}
+        \newline Cada instrucción \textbf{Redcode} ocupa exactamente una posición de memoria y tarda exactamente un ciclo de reloj para ejecutarse. 
+        \newline Sin embargo, la velocidad a la que un proceso ejecuta instrucciones depende del número de otros procesos en la cola, ya que el tiempo de procesamiento se comparte por igual.
+    
+    \item \textbf{\textsc{Memoria circular:}}
+        \newline Cada celda de memoria puede estar ocupada por una sola instrucción. El espacio de memoria (o núcleo) es de tamaño finito (\textit{CORESIZE)}, pero sólo se utiliza el direccionamiento relativo, es decir, la dirección 0 siempre hace referencia a la instrucción que se ejecuta actualmente, dirección 1 a la instrucción después de ella, y así sucesivamente. 
+        \newline Por tanto, a pesar de que la memoria tenga un tamaño finito, nunca tendrá un final, pues la última y primera posición, son contiguas y cambian a lo largo de la ejecución del código.
+        
+    \item \textbf{\textsc{Multiprocesamiento de bajo nivel:}}
+        \newline En lugar de un solo puntero de instrucción, el simulador de \textbf{Redcode} tiene una cola de procesos para cada programa que contiene un número variable de punteros de instrucción que el simulador recorre. 
+        \newline Cada programa comienza con un solo proceso, pero se pueden agregar nuevos procesos a la cola mediante la instrucción \textit{SPL}. Un proceso muere cuando ejecuta una instrucción \textit{DAT} o realiza una división por cero. Un programa se considera muerto cuando no tiene más procesos a la izquierda. 
+        \item \textbf{\textsc{Etiquetas:}}
+        \newline Para facilitar el uso de las direcciones de memoria, el \textbf{Redcode} moderno, permite el uso de etiquetas antes de una instrucción. De tal forma que, podremos saltar a la dirección de esa etiqueta en cualquier momento.
+\end{itemize}
+
+
+
+\newpage
+\section{Instrucciones básicas.}
+%\noindent
+
+\begin{mdframed}
+    \begin{itemize}
+        \item \textbf{LAS DIRECCIONES DE MEMORIA (\texttt{DIRECCIONAMIENTO DIRECTO}) SE ESCRIBEN CON '\$' [O DIRECTAMENTE CON EL ENTERO]} (se da una dirección de memoria que contiene un valor).
+        \item \textbf{LOS INMEDIATOS CON UNA '\#' DELANTE DEL \newline NÚMERO} (representa el valor del entero dado).
+        \item \textbf{LOS COMENTARIOS SE ESCRIBEN CON UN ';'.}
+    \end{itemize}
+\end{mdframed}
+
+\subsection{DAT}
+\noindent
+\textbf{Mata el proceso}. 
+\begin{itemize}
+    \item Ejemplo:
+    \begin{itemize}
+        \item \textbf{\textsc{DAT \#0, \#0}}
+    \end{itemize}
+\end{itemize}
+
+\newline (Casi imprescindible si queremos ganar, aunque se puede volver en nuestra contra).
+
+\subsection{MOV}
+\noindent
+\textbf{Copia el dato de una dirección a otra}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{\textsc{MOV dir1, dir2}} ;Copia el contenido de la dirección 'dir1' en la 'dir2'.
+        \item \textbf{\textsc{MOV inm, dir}} ;Copia el valor del inmediato 'inm' en la dirección 'dir'.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{ADD/SUB}
+\noindent
+\textbf{Suma / Resta}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{\textsc{ADD dir1, dir2}} ;Suma el contenido de la dirección 'dir1' al de la 'dir2'.
+        \item \textbf{\textsc{ADD inm, dir}} ;Suma el valor 'inm' al contenido de la dirección 'dir'.
+        \item \textbf{\textsc{SUB dir1, dir2}} ;Resta el contenido de la dirección 'dir1' al de la 'dir2'.
+        \item \textbf{\textsc{SUB inm, dir}} ;Resta el valor 'inm' al contenido de la dirección 'dir'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{JMP}
+\noindent
+\textbf{Salto incondicional}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{\textsc{JMP dir}} ;Salta a la dirección 'dir'.
+        \item \textbf{\textsc{JMP etiqueta}} ;Salta a la dirección de la etiqueta.
+    \end{itemize}
+\end{itemize}
+
+
+
+\newpage
+\section{Instrucciones avanzadas.}
+%\noindent
+
+\begin{mdframed}
+    \begin{itemize}
+        \item \textbf{LOS DIRECCIONAMIENTOS DIRECTOS SE ESCRIBEN CON '\$' \newline [O DIRECTAMENTE CON EL ENTERO]} \newline (se da una dirección de memoria que contiene un valor).
+        \item \textbf{LOS DIRECCIONAMIENTOS INDIRECTOS SE ESCRIBEN CON '@'} \newline (se da una dirección de memoria que contiene otra dirección de memoria, la cual contiene, ahora sí, el valor).
+        \item \textbf{LOS DIRECCIONAMIENTOS INDIRECTOS CON \newline PREDECREMENTO SE ESCRIBEN CON '$<$'}
+        \item \textbf{LOS DIRECCIONAMIENTOS INDIRECTOS CON \newline POSTINCREMENTO SE ESCRIBEN CON '$>$'}
+        \item \textbf{EXISTEN CONSTANTES COMO EL TAMAÑO DEL NÚCLEO (\texttt{CORESIZE}) O EL NÚMERO DE PROGRAMAS EN EJECUCIÓN (\texttt{WARRIORS}).}
+\end{itemize}
+\end{mdframed}
+
+\subsection{MUL/DIV}
+\textbf{Multiplicación / División}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{MUL dir1, dir2} ;Multiplica el contenido de la dirección 'dir1' por el contenido de la dirección 'dir2'.
+        \item \textbf{DIV imd1, imd2} ;Divide el número 'imd1' entre el número 'imd2'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{JMZ}
+\textbf{Salto condicional. Comprueba un número y salta si es cero}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{JMZ dir1, dir2} ;Salta a la dirección 'dir1' si 'dir2' es cero.
+    \end{itemize}
+\end{itemize}
+
+\subsection{JMN}
+\textbf{Salto condicional. Comprueba un número y salta si NO es cero}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{JMN dir1, dir2} ;Salta a la dirección 'dir1' si 'dir2' NO es cero.
+    \end{itemize}
+\end{itemize}
+
+\lhead{} %quita el encabezado a la izquierda.
+
+\subsection{DJN}
+\textbf{Resta uno a un número y salta si el resultado de la resta NO es 0}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{DJN dir1, dir2} ;Decrementa uno al contenido de 'dir1', si el resultado NO es cero, salta a la dirección 'dir2'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{SPL}
+\textbf{Crea un nuevo proceso en otra dirección}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{SPL dir} ;Subdivisión del programa. Comienza un nuevo proceso en la dirección 'dir'.
+        \item \textbf{SPL etiqueta} ;Subdivisión del programa, añadiéndose al proceso o procesos en ejecución el situado en la dirección de la 'etiqueta'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{CMP/SEQ}
+\textbf{Salto condicional. Compara dos números, si son iguales, se salta la siguiente instrucción}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{SEQ dir1, dir2} ;Si el contenido de la dirección 'dir1', es igual al de 'dir2', no ejecuta la siguiente instrucción.
+    \end{itemize}
+\end{itemize}
+
+\subsection{SNE}
+\textbf{Salto condicional. Compara dos números, si NO son iguales, se salta la siguiente instrucción}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{SNE dir1, dir2} ;Si el contenido de la dirección 'dir1', NO es igual al de 'dir2', no ejecuta la siguiente instrucción.
+    \end{itemize}
+\end{itemize}
+
+\subsection{NOP}
+\textbf{No hace nada}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{NOP dir1, dir2} ;Pues eso, no hace nada. Pero los operandos se siguen evaluando, es decir, consume un ciclo de ejecución.
+    \end{itemize}
+\end{itemize}
+
+
+
+\newpage
+\section{Mi primer virus.}
+\noindent
+Lo primero es saber qué instrucciones están dentro de nuestro alcance y cuales sobrepasan nuestros conocimientos, es decir, hay que ser realistas, si es la primera vez que programas en un lenguaje ensamblador no es necesario que hagas un virus con decenas de saltos y líneas de código.
+\newline Y es tan sencillo como ver los ejemplos, entenderlos, coger uno que nos guste y mejorarlo. 
+\begin{flushright} Fernando (Humper) \end{flushright}
+
+
+\newpage
+\section{Estrategias.}
+\noindent
+\textsc{Siempre se halla la eterna duda entre \textbf{FUERZA} y \textbf{VELOCIDAD}.
+\newline Rellenar rápidamente el núcleo o atacar a posiciones estratégicas.} \\
+\\ En CoreWar existen \textbf{3 estrategias} fundamentales que, por analogía con el famoso juego, se les denominan \textbf{piedra, papel y tijera}.
+
+\begin{enumerate}
+    \item \textbf{PAPEL: } \underline{hace múltiples copias de sí mismo lo más rápidamente posible}, así sacrifica velocidad de ataque por resistencia.
+    \newline Esta estrategia \underline{vence a piedra} pero \underline{pierde ante tijeras} gracias a su gran capacidad de supervivencia aunque tienen una cierta tendencia al empate. 
+    \item  \textbf{PIEDRA: } \underline{bombardea direcciones de memoria a ciegas} intentando matar rápidamente al mayor número de enemigos. Su reducido tamaño y sencillez los hace relativamente robustos y difíciles de localizar.
+    \newline Esta estrategia \underline{vence a tijeras} pero \underline{pierde ante papel}. 
+     \item \textbf{TIJERA: } \underline{es la más avanzada.} Comprueba posiciones de memoria a intervalos hasta localizar al guerrero rival. Una vez localizado generalmente sobrescriben su código con instrucciones que les obligan a generar nuevos procesos indefinidamente hasta quedar prácticamente bloqueados. Después proceden a eliminar todos los rivales.
+     \newline Esta estrategia generalmente \underline{vence al papel} y \underline{pierde contra piedra}, puesto que pierde tiempo atacando las posiciones de memoria alteradas por este último. 
+\end{enumerate}
+
+
+\newpage
+\section{Ejemplos.}
+\noindent
+
+\begin{enumerate}
+    \item \underline{TRASGO}: \\
+    \newline \textbf{MOV 0, 1} ;Copia el contenido de la dirección '0' en la dirección '1'. \newline \phantom{....................};No puede ganar, sólo empatar.
+    \newline
+
+    \item \underline{ENANO BOMBARDERO} (DRAW): \\
+    \newline \textbf{ADD \#4, 3} \phantom{...};Suma al contenido de la dirección '4', el entero '3'.
+    \newline \textbf{MOV 2, @2} \phantom{...};Copia el contenido de la dirección '2' en la dirección contenida en \newline \phantom{..........................}la dirección '2'.
+    \newline \textbf{JMP -2} \phantom{...........};Salta a la dirección de memoria '-2'.
+    \newline \textbf{DAT \#0, \#0} \phantom{.};Termina el proceso.
+    \newline
+    
+    \item \underline{BLANCA-!NIEVES:}
+    \begin{mdframed}
+        \newline \textit{(El siguiente código es parte del virus 'BLANCA-NIEVES', observando atentamente, veremos que son una serie de 'ENANOS' encadenados de una forma sofisticada).}
+    \end{mdframed}
+    \newline \textbf{Enano: \phantom{.....}SPL Mudito}
+    \newline \textbf{Sabiondo: ADD \#1328, 3}       
+    \newline \textbf{\phantom{.................}MOV 2, @2}
+    \newline \textbf{\phantom{.................}JMP -2}
+    \newline \textbf{\phantom{.................}DAT \#0, \#0}
+    \newline \textbf{Mudito: \phantom{...}ADD \#516,3}    
+    \newline \textbf{\phantom{.................}MOV 2, @2}
+    \newline \textbf{\phantom{.................}JMP -2} 
+    \newline \textbf{\phantom{.................}DAT \#0, \#0}
+    \newline
+    
+    \item \underline{ZERG-RUSH:} \\
+    \newline \textbf{salt\phantom{..}EQU \#100} \phantom{.......};Etiqueta 'salt'. Establece una constante, cuyo valor será 100.
+    \newline \textbf{ \phantom{.......}MOV salt, 10} \phantom{...};Copia el valor de la dirección de la etiqueta 'salt' en la dirección \newline \phantom{......................................}de memoria '10'.
+    \newline \textbf{loop MOV imp, @9} \phantom{.};Etiqueta 'loop'.
+	\newline \textbf{\phantom{........}SPL @8} \phantom{.............};Crea un nuevo proceso en la dirección que contiene \newline \phantom{......................................}la dirección de memoria '8'.
+	\newline \textbf{\phantom{........}ADD \#100, 7} \phantom{..};Suma '100' al contenido de la dirección '7'
+	\newline \textbf{\phantom{........}JMP loop} \phantom{.........};Salta a la etiqueta 'loop'
+    \newline \textbf{imp \phantom{.}MOV 0,1} \phantom{..........};Etiqueta 'imp'. Copia el contenido de la dirección '0' en la dirección '1. \\
+    \newline \phantom{..........................................................................}(Cortesía del Profesor José Luis Vázquez-Poletti).
+    
+\end{enumerate}
+
+\newpage
+\vspace*{\fill} % Para que lo escriba al final de la página
+\doclicenseThis %done
+
+
+
+\end{document}
