@@ -1,0 +1,57 @@
+\newpage
+\section{Ataque de Denegación de Servicio (DDoS)}
+\textbf{DDoS} son las siglas de “\textbf{Distributed Denial of Service}”. Traducido al castellano, significa literalmente “Ataque distribuido denegación de servicio”.
+\newline \\
+Un \textbf{ataque DDoS o ataque de denegación de servicio}, es aquel cuyo principal objetivo es \textbf{inhabilitar el uso de un determinado sistema} o infraestructura para que no pueda prestar el servicio para el que está destinado. 
+El ataque puede ir dirigido a la red informática o al servidor web, por ejemplo.
+\newline\\
+\noindent
+En términos más sencillos, un ataque DDoS \textbf{consiste en saturar al receptor de paquetes hasta que este colapse} y no pueda prestar servicio.
+\newline\\
+\noindent
+Este ataque puede ser realizado tanto desde la consola de comandos de \textbf{Windows} (CMD o PowerShell), como desde la terminal de \textbf{Linux}.\\
+No os voy a enseñar a realizar un ataque real, porque además necesitaréis de herramientas externas para ello, pero podéis probar a relizar algunas peticiones a servidores con lo que os explico a continuación.
+
+\subsection{Desde Windows}
+Aunque a muchos les sorprenda, un ataque DDoS se puede hacer desde la consola de Windows, pues al fin y al cabo, no es más que un envío masivo de paquetes y la herramienta \textsc{PING}, sirve para ello (aunque su finalidad real sea la de comprobar el estado de un host).
+\newline
+A continuación vemos un ejemplo de como hacerlo (ejecutando un CMD en modo Administrador):
+
+\begin{tcolorbox}[colframe=black!75!blue]
+ \begin{center}
+    ping \textsc{diskobolo.fdi.ucm.es} -t -l 65500
+ \end{center}
+\end{tcolorbox}
+
+Explicación de cada campo:
+\begin{itemize}
+    \item \textbf{ping}: comando para realizar el ataque.
+    \item \textbf{diskobolo.fdi.ucm.es}: IP a la que se dirige el ataque.
+    \item \textbf{-t}: campo que sirve para hacer que los envíos de paquetes no se detengan hasta que pulsemos \textit{'CTRL+C'}.
+    \item \textbf{-l 65500}: comando para elegir el tamaño (en bytes) de datos que se envían. Tened en cuenta que los servidores con un sistema de seguridad bien implementado, no os dejarán enviar paquetes tan pesados, por tanto, deberéis disminuir el tamaño de los paquetes y usar muchas máquinas diferentes a la vez para realizar un ataque efectivo.
+\end{itemize}
+
+\subsection{Desde Linux}
+Para llevar a cabo un ataque de este tipo desde una máquina Linux, debemos descargar el paquete \textsc{hping3}, para ello introducimos el siguiente comando:
+\begin{tcolorbox}[colframe=black!75!red]
+ \begin{center}
+    sudo apt install hping3
+ \end{center}
+\end{tcolorbox}
+A continuación vemos un ejemplo de cómo realizar un ataque:
+\begin{tcolorbox}[colframe=black!75!red]
+ \begin{center}
+     sudo hping3 --rand-source -p 80 -S --flood \textsc{esports.fdi.ucm.es}
+ \end{center}
+\end{tcolorbox}
+
+Explicación de cada campo:
+\begin{itemize}
+    \item \textbf{sudo}: ejecuta el comando con permisos de súper-usuario.
+    \item \textbf{hping3}: comando para realizar el ataque.
+    \item \textbf{--randsource}: genera IPs falsas de forma aleatoria para no dejar un rastro de nuestra IP real, que es desde la que se está realizando el ataque-
+    \item \textbf{-p 80}: puerto al que se va a realizar el ataque, en este caso el 80 (http).
+    \item \textbf{-S}: activa el flag syn.
+    \item \textbf{--flood}: le indica a \textsc{hping3} que envie los paquetes a la máxima velocidad posible.
+     \item \textbf{esports.fdi.ucm.es}: IP de la víctima.
+\end{itemize}

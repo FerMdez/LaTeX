@@ -1,0 +1,106 @@
+\newpage
+\section{Conexión a la VPN, \textsc{HackTheCERN / HackTheCSN / HackTheUCM}}
+\subsection{Código ético}
+Antes de comenzar, os adjuntamos el \textit{Manual de Código Ético} proporcionado por el \textbf{CERN} y por el \textbf{CSN}. Es muy recomendable que les echéis un vistazo, pues explica las direcciones IPs a las que debéis enfocar vuestros ataques y cómo debéis realizar estos mismos:
+\begin{tcolorbox}
+    \url{https://cv4.ucm.es/moodle/pluginfile.php/4672494/mod_resource/content/1/CERNCodeOfEthics.pdf}
+\end{tcolorbox} 
+
+\begin{tcolorbox}
+    \url{https://cv4.ucm.es/moodle/pluginfile.php/7094461/mod_resource/content/1/CodigoEtico.pdf}
+\end{tcolorbox} 
+
+\subsection{Registro}
+Para poder tener acceso a la VPN, \textbf{es necesario que rellenéis este formulario} con vuestra cuenta UCM y esperéis una confirmación mediante correo electrónico de que se os ha concedido acceso, \textbf{hasta entonces, no podréis realizar ningún ataque}.
+\begin{tcolorbox}
+    \url{https://fdist.ucm.es/registro/}
+\end{tcolorbox}
+
+\subsection{Configuración de la VPN}
+\subsubsection{En distribuciones Linux} 
+\begin{tcolorbox}[colframe=black!75!blue]
+\begin{center}
+    (Basadas en Debian: Ubuntu, Linux Mint, Raspbian...)
+\end{center}
+\end{tcolorbox}
+\begin{enumerate}
+    \item Abrimos un terminal y escribimos el siguiente comando: 
+        \begin{center}
+         \textbf{sudo apt-get install vpnc network-manager-vpnc} 
+        \end{center}
+        \item Si tenemos un escritorio basado en GNOME, escribiremos: 
+        \begin{center}
+         \textbf{sudo apt-get install network-manager-vpnc-gnome}
+        \end{center}
+\end{enumerate}
+
+\begin{tcolorbox}[colframe=black!75!red]
+\begin{center}
+    (En otras versiones como RedHat, Arch, Manjaro...)
+\end{center}
+\end{tcolorbox}
+\begin{enumerate}
+    \item Abrimos un terminal y escribimos el siguiente comando: 
+        \begin{center}
+         \textbf{yum  install vpnc} 
+        \end{center}
+        \item Si no funciona, escribiremos: 
+        \begin{center}
+         \textbf{yum install NetworkManager‐vpnc}
+        \end{center}
+\end{enumerate}
+
+\newline \textsc{(Esto instalará los paquetes para servidor VPN)}.
+
+\begin{itemize}
+    \item Una vez instalados todos los paquetes, escribiremos el comando:
+    \begin{center}
+         \textbf{sudo vpnc} 
+    \end{center}
+    
+    \item A continuación nos pedirá los credenciales, debemos escribir lo siguiente:
+    \begin{tcolorbox}
+        \begin{center}
+            \begin{itemize}
+               \item Pasarela / Gateway: \textbf{reservado2.vpn.ucm.es} 
+               \item Nombre del grupo: \textbf{ucm}
+               \item Contraseña del grupo: \textbf{ucm}
+               \item Nombre de usuario: \textbf{Vuestro correo @ucm.es}
+               \item Contraseña del usuario: \textbf{Vuestra contraseña del correo}
+             \end{itemize}
+        \end{center}
+    \end{tcolorbox}
+    
+    \item Una vez que queramos desconectarnos, debemos escribir el siguiente comando:
+        \begin{center}
+            \textbf{sudo vpnc-disconnect}
+        \end{center}
+        \newline (O simplemente reiniciar el equipo).
+\end{itemize}
+
+\subsubsection{En Windows 10}
+Si estamos usando una máquina virtual de Linux en Windows 10 y conectamos Windows a la VPN, la máquina virtual (que está soportada por Windows 10 como SO principal), también estará conectada a la VPN.
+\begin{itemize}
+    \item En primer lugar, es necesario bajar e instalar el programa \textit{Global Protect} desde la página:
+    \begin{center}
+        \url{https://galeria.ucm.es/global-protect/login.esp}
+    \end{center}
+    
+    \item  Su instalación es muy sencilla y una vez instalado introducimos las credenciales:
+
+ \begin{tcolorbox}
+        \begin{center}
+            \begin{itemize}
+               \item Pasarela / Gateway: \textbf{reservado2.vpn.ucm.es} 
+               \item Nombre de usuario: \textbf{Vuestro correo @ucm.es}
+               \item Contraseña del usuario: \textbf{Vuestra contraseña del correo}
+             \end{itemize}
+        \end{center}
+    \end{tcolorbox}
+    
+    \item Y cuando queramos cerrar la VPN, es tan sencillo como pulsar en \textit{'Desconectar'}.
+\end{itemize}
+
+
+
+

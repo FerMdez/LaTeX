@@ -1,0 +1,23 @@
+\newpage
+\section{Uso de la herramienta NMAP}
+\textbf{Nmap} es un programa de código abierto que \textbf{sirve para efectuar rastreo de puertos}. Fue creado originalmente para Linux aunque \textbf{actualmente es multiplataforma}. \newline Se usa para evaluar la seguridad de sistemas informáticos, así como para descubrir servicios o servidores en una red informática, para ello \textsc{Nmap} envía unos paquetes definidos a otros equipos y analiza sus respuestas.
+\newline Ha llegado a ser una de las herramientas imprescindibles para todo administrador de sistemas, y es usado para pruebas de penetración y tareas de seguridad informática en general.
+Como muchas herramientas usadas en el campo de la seguridad informática, es también una herramienta muy utilizada para hacking.
+\newline\\ A continuación mostramos un ejemplo de uso:
+
+\begin{tcolorbox}
+ \begin{center}
+     sudo nmap -Pn localhost
+ \end{center}
+\end{tcolorbox}
+
+Explicación de cada campo:
+\begin{itemize}
+    \item \textbf{sudo}: ejecuta el comando con permisos de súper-usuario.
+    \item \textbf{namp}: comando para ejecutar la herramienta \textsc{Nmap}.
+    \item \textbf{-Pn}: no realiza \textit{ping} antes del escaneo (evita descartar máquinas levantadas detrás de firewall que bloquea ICMP).
+    \item \textbf{localhost}: IP a la que realizaremos el excanéo, en este caso, \textsc{localhost} es nuestra propia máquina.
+\end{itemize}
+
+\noindent
+\textbf{Aunque tanto para esta, como para cualquier otra herramienta que uséis, os recomendamos no quedaros en los ejemplos que aquí os proponemos y buscar más información de uso. Un buen comienzo para buscar ayuda en cualquier comando es el uso \textbf{'-h' (help)}, el cual nos mostrará por pantalla todo lo que puedes hacer con ese comando.}
