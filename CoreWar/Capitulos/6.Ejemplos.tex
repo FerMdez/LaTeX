@@ -1,0 +1,42 @@
+\newpage
+\section{Ejemplos.}
+\noindent
+
+\begin{enumerate}
+    \item \underline{TRASGO}: \\
+    \newline \textbf{MOV 0, 1} ;Copia el contenido de la dirección '0' en la dirección '1'. \newline \phantom{....................};No puede ganar, sólo empatar.
+    \newline
+
+    \item \underline{ENANO BOMBARDERO} (DRAW): \\
+    \newline \textbf{ADD \#4, 3} \phantom{...};Suma al contenido de la dirección '4', el entero '3'.
+    \newline \textbf{MOV 2, @2} \phantom{...};Copia el contenido de la dirección '2' en la dirección contenida \newline \phantom{..........................}en la dirección '2'.
+    \newline \textbf{JMP -2} \phantom{...........};Salta a la dirección de memoria '-2'.
+    \newline \textbf{DAT \#0, \#0} \phantom{.};Termina el proceso.
+    \newline
+    
+    \item \underline{BLANCA-!NIEVES:}
+    \begin{tcolorbox}
+        \newline \textit{(El siguiente código es parte del virus 'BLANCA-NIEVES', observando atentamente, veremos que son una serie de 'ENANOS' encadenados de una forma sofisticada).}
+    \end{tcolorbox}
+    \newline \textbf{Enano: \phantom{.....}SPL Mudito}
+    \newline \textbf{Sabiondo: ADD \#1328, 3}       
+    \newline \textbf{\phantom{.................}MOV 2, @2}
+    \newline \textbf{\phantom{.................}JMP -2}
+    \newline \textbf{\phantom{.................}DAT \#0, \#0}
+    \newline \textbf{Mudito: \phantom{...}ADD \#516,3}    
+    \newline \textbf{\phantom{.................}MOV 2, @2}
+    \newline \textbf{\phantom{.................}JMP -2} 
+    \newline \textbf{\phantom{.................}DAT \#0, \#0}
+    \newline
+    
+    \item \underline{ZERG-RUSH:} \\
+    \newline \textbf{salt\phantom{..}EQU \#100} \phantom{.......};Etiqueta 'salt'. Establece una constante, cuyo valor será \phantom{.....................................}100.
+    \newline \textbf{ \phantom{.......}MOV salt, 10} \phantom{...};Copia el valor de la dirección de la etiqueta 'salt' en la\newline \phantom{......................................}de direcciónmemoria '10'.
+    \newline \textbf{loop MOV imp, @9} \phantom{.};Etiqueta 'loop'.
+	\newline \textbf{\phantom{........}SPL @8} \phantom{.............};Crea un nuevo proceso en la dirección que contiene \newline \phantom{......................................}la dirección de memoria '8'.
+	\newline \textbf{\phantom{........}ADD \#100, 7} \phantom{..};Suma '100' al contenido de la dirección '7'
+	\newline \textbf{\phantom{........}JMP loop} \phantom{.........};Salta a la etiqueta 'loop'
+    \newline \textbf{imp \phantom{.}MOV 0,1} \phantom{..........};Etiqueta 'imp'. Copia el contenido de la dirección '0' en \phantom{.....................................} la dirección '1. \\
+    \newline \phantom{....................................................}(Cortesía del Profesor José Luis Vázquez-Poletti).
+    
+\end{enumerate}

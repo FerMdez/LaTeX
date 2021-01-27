@@ -1,0 +1,87 @@
+\newpage
+\section{Instrucciones avanzadas.}
+%\noindent
+
+\begin{tcolorbox}
+    \begin{itemize}
+        \item \textbf{LOS DIRECCIONAMIENTOS DIRECTOS SE ESCRIBEN CON '\$' \newline [O DIRECTAMENTE CON EL ENTERO]} \newline (se da una dirección de memoria que contiene un valor).
+        \item \textbf{LOS DIRECCIONAMIENTOS INDIRECTOS SE ESCRIBEN CON '@'} \newline (se da una dirección de memoria que contiene otra dirección de memoria, la cual contiene, ahora sí, el valor).
+        \item \textbf{LOS DIRECCIONAMIENTOS INDIRECTOS CON \newline PREDECREMENTO SE ESCRIBEN CON '$<$'}
+        \item \textbf{LOS DIRECCIONAMIENTOS INDIRECTOS CON \newline POSTINCREMENTO SE ESCRIBEN CON '$>$'}
+        \item \textbf{EXISTEN CONSTANTES COMO EL TAMAÑO DEL NÚCLEO (\texttt{CORESIZE}) O EL NÚMERO DE PROGRAMAS EN EJECUCIÓN (\texttt{WARRIORS}).}
+    \end{itemize}
+\end{tcolorbox}
+
+\subsection{MUL/DIV}
+\textbf{Multiplicación / División}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{MUL dir1, dir2} ;Multiplica el contenido de la dirección 'dir1' por el contenido de la dirección 'dir2'.
+        \item \textbf{DIV imd1, imd2} ;Divide el número 'imd1' entre el número 'imd2'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{JMZ}
+\textbf{Salto condicional. Comprueba un número y salta si es cero}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{JMZ dir1, dir2} ;Salta a la dirección 'dir1' si 'dir2' es cero.
+    \end{itemize}
+\end{itemize}
+
+\subsection{JMN}
+\textbf{Salto condicional. Comprueba un número y salta si NO es cero}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{JMN dir1, dir2} ;Salta a la dirección 'dir1' si 'dir2' NO es cero.
+    \end{itemize}
+\end{itemize}
+
+\subsection{DJN}
+\textbf{Resta uno a un número y salta si el resultado de la resta NO es 0}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{DJN dir1, dir2} ;Decrementa uno al contenido de 'dir1', si el resultado NO es cero, salta a la dirección 'dir2'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{SPL}
+\textbf{Crea un nuevo proceso en otra dirección}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{SPL dir} ;Subdivisión del programa. Comienza un nuevo proceso en la dirección 'dir'.
+        \item \textbf{SPL etiqueta} ;Subdivisión del programa, añadiéndose al proceso o procesos en ejecución el situado en la dirección de la 'etiqueta'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{CMP/SEQ}
+\textbf{Salto condicional. Compara dos números, si son iguales, se salta la siguiente instrucción}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{SEQ dir1, dir2} ;Si el contenido de la dirección 'dir1', es igual al de 'dir2', no ejecuta la siguiente instrucción.
+    \end{itemize}
+\end{itemize}
+
+\subsection{SNE}
+\textbf{Salto condicional. Compara dos números, si NO son iguales, se salta la siguiente instrucción}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{SNE dir1, dir2} ;Si el contenido de la dirección 'dir1', NO es igual al de 'dir2', no ejecuta la siguiente instrucción.
+    \end{itemize}
+\end{itemize}
+
+\subsection{NOP}
+\textbf{No hace nada}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{NOP dir1, dir2} ;Pues eso, no hace nada. Pero los operandos se siguen evaluando, es decir, consume un ciclo de ejecución.
+    \end{itemize}
+\end{itemize}

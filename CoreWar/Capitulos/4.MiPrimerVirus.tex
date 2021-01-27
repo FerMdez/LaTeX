@@ -1,0 +1,62 @@
+\newpage
+\section{Mi primer virus.}
+\noindent
+Lo primero es saber qué instrucciones están dentro de nuestro alcance y cuales sobrepasan nuestros conocimientos, es decir, hay que ser realistas, si es la primera vez que programas en un lenguaje ensamblador no es necesario que hagas un virus con decenas de saltos y líneas de código.
+\newline Y es tan sencillo como ver los ejemplos, entenderlos, coger uno que nos guste y mejorarlo. 
+\begin{flushright} Fernando \end{flushright}
+
+\subsection{Ejemplo de ejecución instrucción a instrucción}
+\begin{tcolorbox}
+    ADD \#4, 3 \phantom{................};Aquí comienza la ejecución. \\
+    MOV 2, @2\\
+    JMP -2\\
+    DAT \#0, \#0
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    ADD \#\textbf{4}, 3\\
+    MOV 2, @2 \phantom{................};Siguiente instrucción. \\
+    JMP -2\\
+    DAT \#0, \#\textbf{4}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    ADD \#4, 3\\
+    MOV \textbf{2}, \textbf{@2} ;\phantom{...}---------,\\
+    JMP -2\phantom{........} ;\phantom{.............}\| \textbf{+2}\\
+    DAT \#0, \#\textbf{4} ;\phantom{..}<--' --,\\ %El operando B del MOV, apunta aquí.\\
+    ...\phantom{.......................................} \|\\
+    ...\phantom{.......................................} \| \textbf{+4}\\
+    ...\phantom{.......................................} \|\\
+    DAT \#0, \#4 ;\phantom{...}<----' %El operando B del DAT apunta aquí.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    ADD \#4, 3\\
+    MOV 2, @2\\
+    JMP -2\phantom{................};Siguiente instrucción. \\
+    DAT \#0, \#8\\
+    ...\\
+    ...\\
+    ...\\
+    DAT \#0, \#4\\
+    ...\\
+    ...\\
+    ...\\
+    DAT \#0, \#8
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    ADD \#4, 3\phantom{................};Siguiente instrucción. \\
+    MOV 2, @2\\
+    JMP -2\\
+    DAT \#0, \#8\\
+    ...\\
+    ...\\
+    ...\\
+    DAT \#0, \#4\\
+    ...\\
+    ...\\
+    ...\\
+    DAT \#0, \#8
+\end{tcolorbox}

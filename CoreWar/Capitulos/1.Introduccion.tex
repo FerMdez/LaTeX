@@ -1,0 +1,31 @@
+\newpage
+\section{Introducción al CoreWar.}
+
+\subsection{Historia}
+\noindent
+\textsc{\textbf{CoreWar}} es un juego de programación en donde combaten entre sí programas escritos en un lenguaje similar al ensamblador con el objetivo de ocupar toda la memoria de la máquina eliminando así a los oponentes.
+\newline El primer sistema de este tipo se denominó \textbf{Redcode} así como el lenguaje empleado.
+
+\subsection{Objetivo}
+\noindent
+Sobrescribir el programa del rival y/o hacer que ejecute una instrucción ilegal (\textbf{\textsc{DAT}}).
+
+\subsection{Conceptos básicos}
+\noindent
+\begin{itemize}
+    \item \textbf{\textsc{Ejecución de instrucciones:}}
+        \newline Cada instrucción \textbf{Redcode} ocupa exactamente una posición de memoria y tarda exactamente un ciclo de reloj para ejecutarse. 
+        \newline Sin embargo, la velocidad a la que un proceso ejecuta instrucciones depende del número de otros procesos en la cola, ya que el tiempo de procesamiento se comparte por igual.
+    
+    \item \textbf{\textsc{Memoria circular:}}
+        \newline Cada celda de memoria puede estar ocupada por una sola instrucción. El espacio de memoria (o núcleo) es de tamaño finito (\textit{CORESIZE)}, pero sólo se utiliza el direccionamiento relativo, es decir, la dirección 0 siempre hace referencia a la instrucción que se ejecuta actualmente, dirección 1 a la instrucción después de ella, y así sucesivamente. 
+        \newline Por tanto, a pesar de que la memoria tenga un tamaño finito, nunca tendrá un final, pues la última y primera posición, son contiguas y cambian a lo largo de la ejecución del código.
+        
+    \item \textbf{\textsc{Multiprocesamiento de bajo nivel:}}
+        \newline En lugar de un solo puntero de instrucción, el simulador de \textbf{Redcode} tiene una cola de procesos para cada programa que contiene un número variable de punteros de instrucción que el simulador recorre. 
+        \newline Cada programa comienza con un solo proceso, pero se pueden agregar nuevos procesos a la cola mediante la instrucción \textit{SPL}. Un proceso muere cuando ejecuta una instrucción \textit{DAT} o realiza una división por cero. Un programa se considera muerto cuando no tiene más procesos a la izquierda. 
+        
+        \newpage
+        \item \textbf{\textsc{Etiquetas:}}
+        \newline Para facilitar el uso de las direcciones de memoria, el \textbf{Redcode} moderno, permite el uso de etiquetas antes de una instrucción. De tal forma que, podremos saltar a la dirección de esa etiqueta en cualquier momento.
+\end{itemize}

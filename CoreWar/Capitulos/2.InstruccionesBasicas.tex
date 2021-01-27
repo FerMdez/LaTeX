@@ -1,0 +1,59 @@
+\newpage
+\section{Instrucciones básicas.}
+%\noindent
+
+\begin{tcolorbox}
+    \begin{itemize}
+        \item \textbf{LAS DIRECCIONES DE MEMORIA (\texttt{DIRECCIONAMIENTO DIRECTO}) SE ESCRIBEN CON '\$' [O DIRECTAMENTE CON EL ENTERO]} (se da una dirección de memoria que contiene un valor).
+        \item \textbf{LOS INMEDIATOS CON UNA '\#' DELANTE DEL \newline NÚMERO} (representa el valor del entero dado).
+        \item \textbf{LOS COMENTARIOS SE ESCRIBEN CON UN ';'.}
+    \end{itemize}
+\end{tcolorbox}
+
+\subsection{DAT}
+\noindent
+\textbf{Mata el proceso}. 
+\begin{itemize}
+    \item Ejemplo:
+    \begin{itemize}
+        \item \textbf{\textsc{DAT \#0, \#0}}
+    \end{itemize}
+\end{itemize}
+
+\newline (Casi imprescindible si queremos ganar, aunque se puede volver en nuestra contra).
+
+\subsection{MOV}
+\noindent
+\textbf{Copia el dato de una dirección a otra}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{\textsc{MOV dir1, dir2}} ;Copia el contenido de la dirección 'dir1' en la 'dir2'.
+        \item \textbf{\textsc{MOV inm, dir}} ;Copia el valor del inmediato 'inm' en la dirección 'dir'.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{ADD/SUB}
+\noindent
+\textbf{Suma / Resta}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{\textsc{ADD dir1, dir2}} ;Suma el contenido de la dirección 'dir1' al de la 'dir2'.
+        \item \textbf{\textsc{ADD inm, dir}} ;Suma el valor 'inm' al contenido de la dirección 'dir'.
+        \item \textbf{\textsc{SUB dir1, dir2}} ;Resta el contenido de la dirección 'dir1' al de la 'dir2'.
+        \item \textbf{\textsc{SUB inm, dir}} ;Resta el valor 'inm' al contenido de la dirección 'dir'.
+    \end{itemize}
+\end{itemize}
+
+\subsection{JMP}
+\noindent
+\textbf{Salto incondicional}.
+\begin{itemize}
+    \item Ejemplos:
+    \begin{itemize}
+        \item \textbf{\textsc{JMP dir}} ;Salta a la dirección 'dir'.
+        \item \textbf{\textsc{JMP etiqueta}} ;Salta a la dirección de la etiqueta.
+    \end{itemize}
+\end{itemize}

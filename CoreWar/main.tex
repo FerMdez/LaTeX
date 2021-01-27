@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{graphics}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+]{doclicense}
+\usepackage{mdframed}
+\usepackage[margin = 1.2in]{geometry}
+\usepackage{listings} 
+\usepackage{color}
+\usepackage[listings]{tcolorbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0} \definecolor{codegray}{rgb}{0.5,0.5,0.5} \definecolor{codepurple}{rgb}{0.58,0,0.82} \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{ backgroundcolor=\color{backcolour}, commentstyle=\color{ codegreen}, 
+keywordstyle=\color{magenta}, numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, 
+basicstyle=\footnotesize,
+breakatwhitespace=false,
+breaklines=true,
+captionpos=b,
+keepspaces=true,
+numbers=left,
+numbersep=5pt,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\title{El manual básico de CoreWar \\
+\large Aprende Redcode DAT cero.}
+\author{Fernando Méndez Torrubiano}
+\date{2 de febrero de 2019}
+
+\begin{document}
+\pagestyle{fancy} %Estilo de página a partir de aquí
+\rhead{El manual básico de CoreWar} %Encabezado a la derecha.
+\lhead{Fernando Méndez}
+
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 0.8\textwidth]{Media/COREWARUCM.jpg}
+\end{figure}
+
+\newpage
+\tableofcontents
+
+\input{Capitulos/1.Introduccion.tex}
+\input{Capitulos/2.InstruccionesBasicas.tex}
+\input{Capitulos/3.InstruccionesAvanzadas.tex}
+\input{Capitulos/4.MiPrimerVirus.tex}
+\input{Capitulos/5.Estrategias.tex}
+\input{Capitulos/6.Ejemplos.tex}
+\input{Capitulos/7.Licencia.tex}
+
+\end{document}
