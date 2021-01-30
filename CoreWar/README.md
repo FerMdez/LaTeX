@@ -1,4 +1,4 @@
-# LaTeX / Guía del auto-Hacker Galáctico 💻
+# LaTeX / El manual básico de CoreWar 💻
 LATEX projects.
 
 Para uso exclusivo con fines académicos. Se prohíbe su uso para entregas calificables y/o uso comercial.
