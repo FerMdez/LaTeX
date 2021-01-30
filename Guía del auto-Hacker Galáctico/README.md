@@ -14,7 +14,7 @@ Para uso exclusivo con fines académicos. Se prohíbe su uso para entregas calif
 * 2.7. [El Juramento Hacker](https://github.com/FerMdez/LaTeX/blob/master/Gu%C3%ADa%20del%20auto-Hacker%20Gal%C3%A1ctico/Capitulos/7.El_juramento_hacker.tex)
 * 2.8. [Licencia](https://github.com/FerMdez/LaTeX/blob/master/Gu%C3%ADa%20del%20auto-Hacker%20Gal%C3%A1ctico/Capitulos/8.Licencia.tex)
 3. [main.txt](https://github.com/FerMdez/LaTeX/blob/master/Gu%C3%ADa%20del%20auto-Hacker%20Gal%C3%A1ctico/main.tex)
-4. [La Guía del Auto-Hacker Galáctico](https://github.com/FerMdez/LaTeX/blob/master/Gu%C3%ADa%20del%20auto-Hacker%20Gal%C3%A1ctico/Guia_del_auto_Hacker_Galactico.pdf)
+4. [La Guía del auto-Hacker Galáctico (PDF)](https://github.com/FerMdez/LaTeX/blob/master/Gu%C3%ADa%20del%20auto-Hacker%20Gal%C3%A1ctico/Guia_del_auto_Hacker_Galactico.pdf)
 ***
 ## Licencia 📄 
 Educational Community License v2.0 (ECL-2.0).
