@@ -1,15 +1,39 @@
 \newpage
 \section{Máquina Virtual de Linux en Windows}
-Aunque vayamos a utilizar una máquina virtual, \textbf{es necesario tener una ISO de la distribución de Linux que queramos usar}.
-\newline Para ello, os recomiendo leer el apartado \textbf{\textit{2.1. Elección de la distribución}}.
-\newline\\
-\noindent
-Cuando tengamos la ISO, debemos descargar el programa VirtualBox (de Oracle), aunque existen muchos e incluso Windows dispone de forma nativa de un método de virtualización, creemos que VirtualBox es el que mejor funciona:
+Lo primero, debemos descargar un programa de virtualización, como \textbf{VirtualBox} (de Oracle), aunque existen muchos e incluso Windows dispone de forma nativa de un método de virtualización, creemos que VirtualBox es el que mejor funciona:
 \newline \url{https://www.virtualbox.org/}
+
+\noindent
+\newline Otra de las alternativas muy buenas es \textbf{VMware}:
+\newline \url{https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html}
+
+\subsection{Maquina Virtual de FDIst}
+\noindent
+Aunque a continuación vamos a explicar cómo crear una máquina virtual, también tenemos la opción de \textbf{importar la máquina virtual ya preparada de FDIst}.
+\newline Está creada sobre Debian 10 con una interfaz gráfica KDE. Es muy ligera y vienen instalados los paquetes más básicos que usaremos (como nmap).
+
+\noindent
+\newline Aunque esta máquina viene por defecto con 2Gb de RAM asignados, si tu PC lo permite, te recomendamos que le asignes más.
+
+\noindent
+\newline El \textit{usuario} es \textbf{fdist} y la \textit{contraseña} es \textbf{fdist}.
+\newline Aquí os dejamos el enlace de \textbf{descarga}: \url{https://fdist.ucm.es/vm/FDIst.ova}\\
+
+\noindent
+Para añadirla es muy sencillo, una vez descargado el archivo \textsc{.ova}:
+    \begin{itemize}
+        \item En \textbf{VirtualBox}: Archivo $>$$>$ Importar servicio virtualizado... $>$$>$\textit{Y seleccionamos el archivo}.
+        \item En \textbf{VMware}: Player $>$$>$ File $>$$>$ Open... $>$$>$ \textit{Y seleccionamos el archivo}.
+    \end{itemize}
 
 \subsection{Creación de una Máquina Virtual}
 \noindent
-Una vez instalado VirtualBox, procedemos a crear una máquina virtual.
+A pesar de que vayamos a utilizar una máquina virtual, \textbf{es necesario tener una ISO de la distribución de Linux que queramos usar}.
+\noindent
+\newline Para ello, os recomiendo leer el apartado \textbf{\textit{2.1. Elección de la distribución}}.
+
+\noindent
+\newline Una vez instalado VirtualBox, procedemos a crear una máquina virtual.
 \newline Para ello pulsamos sobre el icono \textit{'NUEVA'}.
     \begin{figure}[H]
         \centering
